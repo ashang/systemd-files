@@ -1,0 +1,18 @@
+[Unit]
+Description=/etc/init.d/myserv Compatibility
+Requires=rc.local.service
+After=rc.local.service
+
+[Service]
+Type=notify
+RemainAfterExit=yes
+ExecStart=/etc/init.d/myserv start
+ExecStop=/etc/init.d/myserv stop
+ExecStopPost=/etc/init.d/myserv stop
+TimeoutStartSec=200
+TimeoutStopSec=30
+KillMode=none
+StandardOutput=tty
+
+[Install]
+WantedBy=multi-user.target
